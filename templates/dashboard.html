@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+
+<!--Table-->
+<div class="container">
+	<div class="table">
+		<div class="table-header">
+			<div class="header__item"><a id="name" class="filter__link" href="#">Name</a></div>
+			<div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">CPD Code</a></div>
+			<div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Chemical Structure</a></div>
+			<div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">Yield %</a></div>
+			<div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Purity %</a></div>
+            <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Solubility</a></div>
+            <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Location</a></div>
+            <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Physical Appearance</a></div>
+            <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Synthestic Protocol</a></div>
+		</div>
+        <div class="table-content">
+            {% for row in table_data %}
+            <div class="table-row">
+                <div class="table-data">{{ row.cpdcode }}</div>
+                <div class="table-data">{{ row.chemical_structure }}</div>
+                <div class="table-data">{{ row.yield_ }}</div>
+                <div class="table-data">{{ row.purity }}</div>
+                <div class="table-data">{{ row.solubility }}</div>
+                <div class="table-data">{{ row.location }}</div>
+                <div class="table-data">{{ row.physical_appearance }}</div>
+                <div class="table-data">{{ row.synthestic_protocol }}</div>
+            </div>
+            {% endfor %}
+        </div>
+	</div>
+</div>
+
+<!-- + Button -->
+<button onclick="document.getElementById('formDiv').style.display='block'">+</button>
+
+<!-- Form -->
+<div id="formDiv">
+    <form action="/add" method="POST">
+        <input type="text" name="cpdcode" placeholder="CPD Code" required>
+        <input type="text" name="chemical_structure" placeholder="Chemical Structure" required>
+        <input type="text" name="yield_" placeholder="Yield %" required>
+        <input type="text" name="purity" placeholder="Purity %" required>
+        <input type="text" name="solubility" placeholder="Solubility" required>
+        <input type="text" name="location" placeholder="Location" required>
+        <input type="text" name="physical_appearance" placeholder="Physical Appearance" required>
+        <input type="text" name="synthestic_protocol" placeholder="Synthestic Protocol" required>
+        <button type="submit">Add to Table</button>
+    </form>
+</div>
+
+</body>
+</html>
+
+
